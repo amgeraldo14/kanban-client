@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+  <link rel="stylesheet" href="styles.css">
+  
+  <title>Document</title>
+</head>
+<body>
+  <div id="app">
+    <!-- Kanban Board -->
+    <div v-if="page == 'home'">
+      <div class="text-warning bg-dark w-50 mx-auto mb-3 mt-3 border border-secondary rounded" >
+        <br>
+        <h1 class="txt-center">Kanban Board</h1>
+        <br>
+      </div>
+      <!-- <div class="container">
+        <div class="gray box light-shadow font-weight-bold">Backlog</div>
+        <div class="gray box light-shadow font-weight-bold">Product
+          <div class="lightblue content font-weight-normal">ini {{tasks}}</div>
+          <div class="lightblue content font-weight-normal">ini isinya</div>
+          <div class="lightblue content font-weight-normal">ini isinya</div>
+          <div class="lightblue content font-weight-normal">ini isinya</div>
+          <a href="" class="text-warning small" v-on:click.prevent="changePage('addTask')">add a card...</a>
+        </div>
+        <div class="gray box light-shadow font-weight-bold">Development</div>
+        <div class="gray box light-shadow font-weight-bold">Done</div>
+      </div> -->
+      <div class="container">
+        <div class="gray box light-shadow font-weight-bold" v-for="(category, index) in categories" >{{category}}
+          <div v-for="(task, index) in tasks"> 
+            <div class="lightblue content font-weight-normal text-capitalize" v-if="task.category.toLowerCase() == category.toLowerCase()">
+              {{ task.title }}
+              <br>
+              <a href="" class="small">Edit Title</a> ||
+              <a href="" class="small" @click="changePage('update')" >Update Category</a>
+            </div>
+          </div>
+          <button type="button"class="btn btn-sm btn-dark mt-1" v-on:click.prevent="changePage('addTask')">add new task...</button>
+        </div>
+      </div>
+    </div>
+
+    <!-- Login Form -->
+    <div class="shadow mx-auto mt-4 w-25 border-dark rounded bg-dark p-3" v-if="page === 'login'">
+      <form>
+        <div class="form-group text-light">
+          <label for="exampleInputEmail1">Email address</label>
+          <input type="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Enter email">
+          <small id="emailHelp" class="form-text text-warning">We'll never share your email with anyone else.</small>
+        </div>
+        <div class="form-group text-light">
+          <label for="exampleInputPassword1">Password</label>
+          <input type="password" class="form-control" id="exampleInputPassword1" placeholder="Password">
+        </div>
+        <button type="submit" class="btn btn-primary" v-on:click.prevent="changePage('home')"> Submit</button>
+      </form>
+    </div>
+
+    <!-- Add Task Form -->
+
+    <div class="shadow mx-auto mt-4 w-50 border-dark rounded bg-dark p-3 text-light" v-if="page == 'addTask'">
+      <form>
+        <div class="form-group row">
+          <label for="title" class="col-sm-2 col-form-label">Title</label>
+          <div class="col-sm-10">
+            <input type="text" class="form-control" id="title" placeholder="Your task here...">
+          </div>
+        </div>
+        <fieldset class="form-group">
+          <div class="row">
+            <legend class="col-form-label col-sm-2 pt-0">Category</legend>
+            <div class="col-sm-10">
+              <div class="form-check">
+                <input class="form-check-input" type="radio" name="category" id="backlog" value="backlog" checked>
+                <label class="form-check-label" for="backlog">
+                  Backlog
+                </label>
+              </div>
+              <div class="form-check">
+                <input class="form-check-input" type="radio" name="category" id="product" value="product">
+                <label class="form-check-label" for="product">
+                  Product
+                </label>
+              </div>
+              <div class="form-check">
+                <input class="form-check-input" type="radio" name="category" id="development" value="development">
+                <label class="form-check-label" for="development">
+                  Development
+                </label>
+              </div>
+              <div class="form-check">
+                <input class="form-check-input" type="radio" name="category" id="done" value="done">
+                <label class="form-check-label" for="done">
+                  Done
+                </label>
+              </div>
+            </div>
+          </div>
+        </fieldset>
+        <div class="form-group row">
+          <div class="col-sm-10">
+            <button type="submit" class="btn btn-primary" @click="changePage('home')">Add Task</button>
+          </div>
+        </div>
+      </form>
+    </div>
+  </div>
+
+  <div class="container">
+
+  </div>
+
+  <br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br>  
+
+<script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
+<script src="https://cdn.jsdelivr.net/npm/vue@2.6.12/dist/vue.js"></script>
+<script src="./vue.js"></script>
+</body>
+</html>

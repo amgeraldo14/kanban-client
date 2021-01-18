@@ -1,0 +1,65 @@
+body {
+  background-color: darkslategray;
+  font-family: Verdana, Geneva, Tahoma, sans-serif;
+}
+.container {
+  display: flex;
+  justify-content: space-evenly;
+  align-items: flex-start;
+}
+
+.box {
+  padding: 10px;
+  width: 20vw;
+  border-radius: 5px;
+}
+
+.content {
+  padding: 8px;
+  text-align: left;
+  margin-top: 10px;
+  margin-bottom: 10px;
+  border-radius: 10px;
+}
+
+.red {
+  background-color: red;
+}
+
+.blue {
+  background-color: blue;
+}
+
+.green {
+  background-color: green;
+}
+
+.yellow {
+  background-color: yellow;
+}
+
+.gray {
+  background-color: gray;
+}
+
+.lightblue {
+  background-color: lightblue;
+}
+
+.txt-center {
+  text-align: center;
+}
+
+.txt-color {
+  color: #D0B0B0;
+}
+
+.shadow{
+  box-shadow: rgba(0, 0, 0, 0.3) 0px 19px 38px, rgba(0, 0, 0, 0.22) 0px 15px 12px;
+}
+
+.light-shadow{
+  box-shadow: rgba(17, 17, 26, 0.1) 0px 4px 16px, rgba(17, 17, 26, 0.1) 0px 8px 24px, rgba(17, 17, 26, 0.1) 0px 16px 56px;
+}
+
+

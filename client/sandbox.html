@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+<body>
+  <div id="app"> 
+    <ul>
+      <li v-for="(task, index) in tasks"> {{ task.title }} </li>
+    </ul>
+
+
+    <p>First name: {{ firstName }} </p>
+    <p>Last name: {{ lastName }} </p>
+    <p>Full Name: {{ getFullName }}</p>
+    <!-- <p>{{tasks}}</p> -->
+
+    <form>
+      <label for="task">New Task:</label>
+      <input type="text" id="task" v-model="newTask">
+      <button type="submit" v-on:click.prevent="addTask()"> submit </button>
+    </form>
+
+    <button v-on:click="showTasks()">ShowTasks</button>
+  </div>
+
+  <div id="example">
+    <p>Original message: "{{ message }}"</p>
+    <p>Computed reversed message: "{{ reversedMessage }}"</p>
+  </div>
+  
+
+
+  <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/vue@2/dist/vue.js"></script>
+  <script src="./tesvue.js"></script>
+</body>
+</html>
